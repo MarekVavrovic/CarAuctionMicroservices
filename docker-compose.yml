@@ -1,13 +1,25 @@
 services:
   postgres:
     image: postgres:16
+    container_name: carsties-postgres
+    restart: unless-stopped
     environment:
       POSTGRES_PASSWORD: postgrespw
       POSTGRES_USER: postgres
-      POSTGRES_DB: auctions     
+      POSTGRES_DB: auctions
     ports:
       - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
-volumes:
-  pgdata:
+      - /var/lib/postgresql/data                    # Anonymous volume
+
+  mongodb:
+    image: mongo:latest
+    container_name: carsties-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mongopw
+    ports:
+      - "27017:27017"
+    volumes:
+      - /data/db                                    # Anonymous volume
