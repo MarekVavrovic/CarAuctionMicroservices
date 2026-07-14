@@ -14,28 +14,34 @@ builder.Services.AddDbContext<AuctionDbContext>(options =>
 });
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddMassTransit(x => 
+builder.Services.AddMassTransit(x =>
 {
-     x.AddEntityFrameworkOutbox<AuctionDbContext>(o => 
-    {
-        o.QueryDelay = TimeSpan.FromSeconds(10);
+    x.AddEntityFrameworkOutbox<AuctionDbContext>(o =>
+   {
+       o.QueryDelay = TimeSpan.FromSeconds(10);
 
-        o.UsePostgres();
-        o.UseBusOutbox();
-    });
-    
+       o.UsePostgres();
+       o.UseBusOutbox();
+   });
+
     x.AddConsumersFromNamespaceContaining<AuctionCreatedFaultConsumer>();
     x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("auction", false));
 
-    x.UsingRabbitMq((context, cfg) => 
-    {    
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host(builder.Configuration["RabbitMq:Host"], "/", h =>
+       {
+           h.Username(builder.Configuration.GetValue("RabbitMq:Username", "guest"));
+           h.Password(builder.Configuration.GetValue("RabbitMq:Password", "guest"));
+       });
+       
         cfg.ConfigureEndpoints(context);
     });
 });
 
 //JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options => 
+    .AddJwtBearer(options =>
     {
         options.Authority = builder.Configuration["IdentityServiceUrl"];
         options.RequireHttpsMetadata = false;
