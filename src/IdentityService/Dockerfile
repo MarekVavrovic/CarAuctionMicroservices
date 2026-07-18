@@ -4,6 +4,9 @@ WORKDIR /app
 # Copy csproj and restore as distinct layers
 COPY Carsties.sln ./
 COPY src/IdentityService/IdentityService.csproj ./src/IdentityService/
+COPY tests/AuctionService.UnitTests/AuctionService.UnitTests.csproj tests/AuctionService.UnitTests/AuctionService.UnitTests.csproj
+COPY tests/AuctionService.IntegrationTests/AuctionService.IntegrationTests.csproj tests/AuctionService.IntegrationTests/AuctionService.IntegrationTests.csproj
+
 
 # Restore package deps
 RUN dotnet restore ./src/IdentityService/IdentityService.csproj

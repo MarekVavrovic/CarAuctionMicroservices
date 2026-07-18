@@ -5,6 +5,8 @@ WORKDIR /app
 COPY Carsties.sln ./
 COPY src/SearchService/SearchService.csproj ./src/SearchService/
 COPY src/Contracts/Contracts.csproj ./src/Contracts/
+COPY tests/AuctionService.UnitTests/AuctionService.UnitTests.csproj tests/AuctionService.UnitTests/AuctionService.UnitTests.csproj
+COPY tests/AuctionService.IntegrationTests/AuctionService.IntegrationTests.csproj tests/AuctionService.IntegrationTests/AuctionService.IntegrationTests.csproj
 
 # Restore package deps
 RUN dotnet restore ./src/SearchService/SearchService.csproj

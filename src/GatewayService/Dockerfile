@@ -4,6 +4,8 @@ WORKDIR /app
 # Copy csproj and restore as distinct layers
 COPY Carsties.sln ./
 COPY src/GatewayService/GatewayService.csproj ./src/GatewayService/
+COPY tests/AuctionService.UnitTests/AuctionService.UnitTests.csproj tests/AuctionService.UnitTests/AuctionService.UnitTests.csproj
+COPY tests/AuctionService.IntegrationTests/AuctionService.IntegrationTests.csproj tests/AuctionService.IntegrationTests/AuctionService.IntegrationTests.csproj
 
 
 # Restore package deps
