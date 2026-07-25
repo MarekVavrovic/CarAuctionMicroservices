@@ -12,6 +12,7 @@
     "@tailwindcss/postcss": "^4.3.3",
     "flowbite-react": "^0.12.17",
     "next": "15.5.20",
+    "next-auth": "^5.0.0-beta.32",
     "query-string": "^9.4.1",
     "react": "19.1.0",
     "react-countdown": "^2.3.6",
