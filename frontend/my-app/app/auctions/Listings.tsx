@@ -21,16 +21,15 @@ export default function Listings() {
       searchTerm: state.searchTerm,
       orderBy: state.orderBy,
       filterBy: state.filterBy,
+      seller:state.seller,
+      winner:state.winner
     })),
   );
 
   const setParams = useParamsStore((state) => state.setParams);
 
   //query-string package
-  const url = qs.stringifyUrl(
-    { url: "", query: params },
-    { skipEmptyString: true },
-  );
+  const url = qs.stringifyUrl({ url: "", query: params },{ skipEmptyString: true },);
 
   function setPageNumber(pageNumber: number) {
     setParams({ pageNumber });
