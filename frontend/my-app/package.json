@@ -9,7 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@microsoft/signalr": "^10.0.0",
     "@tailwindcss/postcss": "^4.3.3",
+    "date-fns": "^4.4.0",
     "flowbite-react": "^0.12.17",
     "next": "15.5.20",
     "next-auth": "^5.0.0-beta.32",
