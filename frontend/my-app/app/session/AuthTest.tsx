@@ -1,5 +1,7 @@
 'use client';
 
+// export const dynamic = 'force-dynamic';
+
 import { Button, Spinner } from "flowbite-react";
 import { useState } from "react";
 import { updateAuctionTest } from "../actions/auctionActions";

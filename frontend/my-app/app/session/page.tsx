@@ -1,3 +1,5 @@
+// export const dynamic = 'force-dynamic';
+
 import { auth } from "@/auth";
 import Heading from "../components/Heading";
 import AuthTest from "./AuthTest";

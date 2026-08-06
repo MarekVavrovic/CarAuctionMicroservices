@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "media.istockphoto.com" },
     ],
   },
+   output: "standalone",
 };
 
 export default withFlowbiteReact(nextConfig);
